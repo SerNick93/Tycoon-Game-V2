@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38d11855de5b98489e49bda1ebfa765, type: 3}
+  m_Name: Bowl
+  m_EditorClassIdentifier: 
+  thumbnail: {fileID: 0}
+  unlockName: Bowl
+  description: 
+  researchTime: 30
+  unlockObject: []
+  prerequisits:
+  - {fileID: 11400000, guid: 92e6dec13b389f1459417783c52b2757, type: 2}
+  isUnlocked: 1
+  researchCost: 0

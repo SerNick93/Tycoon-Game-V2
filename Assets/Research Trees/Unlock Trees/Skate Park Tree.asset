@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c66adc3c35ffa74e8bd207093a3a971, type: 3}
+  m_Name: Skate Park Tree
+  m_EditorClassIdentifier: 
+  treeName: Skate Park Tree
+  numberOfUnlocksInThisTree:
+  - {fileID: 11400000, guid: ad9e567cae64e6c4cbd865faa0f39f08, type: 2}
+  - {fileID: 11400000, guid: ec350130f8458e840948f0e7612d60ab, type: 2}
+  - {fileID: 11400000, guid: 92e6dec13b389f1459417783c52b2757, type: 2}
+  - {fileID: 11400000, guid: 055008adeba29da43abad7fbb4ed4e48, type: 2}
+  - {fileID: 11400000, guid: 5901ad4f4dd74b5459910ecf8b571c1d, type: 2}
+  - {fileID: 11400000, guid: 0c28d01e22de4db49b2a4e32514a594b, type: 2}
