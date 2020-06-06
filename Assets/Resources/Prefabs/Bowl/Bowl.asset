@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd92357ceb1612647b301522eb09a90e, type: 3}
   m_Name: Bowl
   m_EditorClassIdentifier: 
+  thumbnail: {fileID: 0}
+  unlockName: 
+  description: 
+  researchTime: 0
+  unlockObject: []
+  prerequisits: []
+  isUnlocked: 0
+  researchCost: 0
   multiPlace: 0
-  placeUnderground: 1
-  cost: 100
+  placeUnderground: 0
+  cost: 0

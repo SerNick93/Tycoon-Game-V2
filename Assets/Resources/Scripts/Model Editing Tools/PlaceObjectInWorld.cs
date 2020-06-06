@@ -29,16 +29,6 @@ public class PlaceObjectInWorld : MonoBehaviour
 
     public void InitScripts()
     {
-        ObjectBoxCollider = GetComponent<BoxCollider>();
-        ObjectTransform = transform.GetChild(0).GetComponent<Transform>();
-        ObjectMeshRenderer = ObjectTransform.GetComponent<MeshRenderer>();        
-
-        //cc.isTrigger = true;
-        ObjectBoxCollider.center = ObjectMeshRenderer.bounds.center;
-        ObjectBoxCollider.size = ObjectMeshRenderer.bounds.size - new Vector3(0.1f, -0.1f, 0.1f);
-        
-        gameObject.layer = 8;
-
         MaterialManager = MaterialManager.MyInstance;
 
         SetRampActive();
@@ -46,7 +36,10 @@ public class PlaceObjectInWorld : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+        if (PlaceableObject.placeUnderground)
+        {
+            TransformControls.MyInstance.SnapToGridToggle.isOn = true;
+        }
         //Move model's posision with mouse movment.
         if (TransformControls.MyInstance.SnapToGridToggle.isOn)
         {
@@ -153,12 +146,12 @@ public class PlaceObjectInWorld : MonoBehaviour
             }
         }
     }
+    
     private void OnCollisionStay(Collision collision)
     {
                     
         if (PlaceableObject.placeUnderground)
         {
-
             if (collision.transform.gameObject.layer == 9)
             {
                 foreach (ContactPoint contact in collision.contacts)

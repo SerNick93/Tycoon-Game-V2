@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\AutoSave\Editor\AutoSaveExtension.cs" />
     <Compile Include="Assets\Editor\GenerateObject.cs" />
+    <Compile Include="Assets\Editor\UnlockArrayForEditorWindow.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>J:/Unity Projects/Tycoon Game V2/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>

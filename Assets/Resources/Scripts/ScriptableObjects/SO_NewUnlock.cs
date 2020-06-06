@@ -8,6 +8,7 @@ public class SO_NewUnlock : ScriptableObject
 {
     public Image thumbnail;
     public string unlockName;
+    [Multiline]
     public string description;
     public float researchTime;
     public SO_NewUnlock[] unlockObject;

@@ -22,7 +22,7 @@ public static class ScriptableObjectUtility
 		//	path = path.Replace(Path.GetFileName(AssetDatabase.GetAssetPath(Selection.activeObject)), "");
 		//}
 
-		string assetPathAndName = AssetDatabase.GenerateUniqueAssetPath(fullPath +"/" + objectName +  ".asset");
+		string assetPathAndName = AssetDatabase.GenerateUniqueAssetPath(fullPath + "/" + objectName +  ".asset");
 
 		AssetDatabase.CreateAsset(asset, assetPathAndName);
 
