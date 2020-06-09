@@ -36,10 +36,7 @@ public class PlaceObjectInWorld : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (PlaceableObject.placeUnderground)
-        {
-            TransformControls.MyInstance.SnapToGridToggle.isOn = true;
-        }
+
         //Move model's posision with mouse movment.
         if (TransformControls.MyInstance.SnapToGridToggle.isOn)
         {
@@ -130,12 +127,6 @@ public class PlaceObjectInWorld : MonoBehaviour
             go.transform.GetChild(0).GetComponent<MeshRenderer>().material = MaterialManager.StandardMat;
             go.GetComponent<PlaceObjectInWorld>().enabled = false;
 
-            #region Only used in editor
-#if UNITY_EDITOR
-            go.transform.name = string.Format("{0}{1}", "Ramp Container: ", numOfRamps);
-            go.transform.GetChild(0).GetComponent<Transform>().name = string.Format("{0}{1}", "Ramp: ", numOfRamps);
-#endif
-            #endregion
 
             GameManager.MyInstance.ReduceMoney(PlaceableObject.cost);
 

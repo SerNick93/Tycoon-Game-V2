@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plane: {fileID: 77220899225163811, guid: 13d1fcf29d1c68f43b66be2aa052736a, type: 3}
-  wall: {fileID: 2393095935707594628, guid: a71cf630eea0ee249aa2aa14abc1b394, type: 3}
+  wall: {fileID: -927199367670048503, guid: 47342756a54205e47a85369fe6356acd, type: 3}
   floorTilesParent: {fileID: 381011904}
   wallParents: {fileID: 762281335}
   objectParent: {fileID: 1459450285}
@@ -1180,6 +1180,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2209994170703939609, guid: 0e073bdad10b9094983bb74e8ca0ac5b,
+        type: 3}
+      propertyPath: modelPrefab
+      value: 
+      objectReference: {fileID: 6292047149297966438, guid: 190ebff31df13c249a3d28b835e2e3db,
+        type: 3}
     - target: {fileID: 3665514578121476561, guid: 0e073bdad10b9094983bb74e8ca0ac5b,
         type: 3}
       propertyPath: m_AnchorMin.y

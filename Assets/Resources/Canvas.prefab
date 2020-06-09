@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementType: 1
   materialToBePlaced: {fileID: 0}
-  modelPrefab: {fileID: 1709026374887959823, guid: 2cfe7680eb906de478b88ab584bacfb7,
+  modelPrefab: {fileID: 4036302393992351005, guid: 2cfe7680eb906de478b88ab584bacfb7,
     type: 3}
   zone: {fileID: 0}
 --- !u!1 &736541633448462142
@@ -3358,7 +3358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementType: 1
   materialToBePlaced: {fileID: 0}
-  modelPrefab: {fileID: 7589014269927655650, guid: 1877ccbb16e1a7d47a0b51b7908ba5eb,
+  modelPrefab: {fileID: 2477163465121706774, guid: 1877ccbb16e1a7d47a0b51b7908ba5eb,
     type: 3}
   zone: {fileID: 0}
 --- !u!1 &2927030836950862814
@@ -3505,7 +3505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementType: 1
   materialToBePlaced: {fileID: 0}
-  modelPrefab: {fileID: 1166369373839555090, guid: 74b00d3451feda34d9874279a7f616c3,
+  modelPrefab: {fileID: 5438023194284383410, guid: 74b00d3451feda34d9874279a7f616c3,
     type: 3}
   zone: {fileID: 0}
 --- !u!1 &3268699358414839078
@@ -5722,7 +5722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementType: 1
   materialToBePlaced: {fileID: 0}
-  modelPrefab: {fileID: 205360170883103466, guid: 7d46c1e1b5d568b4ba44aaba51c8f1eb,
+  modelPrefab: {fileID: 7262901590957006609, guid: 46d78e5e771975f48855eb2b5dc1a138,
     type: 3}
   zone: {fileID: 0}
 --- !u!1 &7101426781646055872
@@ -6116,9 +6116,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8094599871568831370}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &8646112699778182040
 GameObject:
