@@ -10,7 +10,7 @@ public class ButtonScript : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private placmentTypeEnum placementType;
     public placmentTypeEnum PlacementType { get => placementType; set => placementType = value; }
-
+    public GameObject ModelPrefab { get => modelPrefab; set => modelPrefab = value; }
 
     [SerializeField]
     Material materialToBePlaced;
@@ -43,10 +43,7 @@ public class ButtonScript : MonoBehaviour, IPointerClickHandler
                     MaterialManager.MyInstance.ActiveMaterial = materialToBePlaced;
                     break;
                 case 1:
-                    if (GameManager.MyInstance.ActiveModel == null)
-                    {
-                        GameManager.MyInstance.ActivateModel(modelPrefab);
-                    }
+                    GameManager.MyInstance.ActivateModel(ModelPrefab);
                     break;
                 case 2:
                     if (ZoningController.MyInstance.ActiveZone == null)

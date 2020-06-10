@@ -19,13 +19,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public GameObject ActiveModel { get => activeModel; set => activeModel = value; }
+    public static List<GameObject> ActiveModels { get => activeModels; set => activeModels = value; }
     public Vector3 MousePoisition { get => mousePoisition; set => mousePoisition = value; }
     public Grid Grid { get => grid; set => grid = value; }
     public float TotalMoney { get => totalMoney; set => totalMoney = value; }
 
     [SerializeField]
-    GameObject activeModel = null;
+    public static List<GameObject> activeModels = new List<GameObject>();
     PlaceObjectInWorld placeObject;
     Vector3 mousePoisition;
     [SerializeField]
@@ -37,20 +37,29 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
+
         TotalMoney = 100;
         UIController.MyInstance.UpdateMoneyUIObject(TotalMoney);
+
     }
     public void ActivateModel(GameObject go)
     {
-
+        ActiveModels.Add(go);
         placeObject = go.GetComponent<PlaceObjectInWorld>();
-        activeModel = go;
 
         placeObject.InitScripts();
     }
     public void FixedUpdate()
     {
         MousePoisition = CustomControllers.GetWorldPositionOnPlane(Input.mousePosition, 0f);
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log(ActiveModels.Count);
+            foreach (GameObject item in ActiveModels)
+            {
+                Debug.Log(item.name);
+            }
+        }
     }
 
     public void IncreaseMoney(float profit)

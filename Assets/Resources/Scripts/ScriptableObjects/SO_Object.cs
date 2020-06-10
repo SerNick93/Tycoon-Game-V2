@@ -11,4 +11,6 @@ public class SO_Object : SO_NewUnlock
     public bool multiPlace;
     public bool placeUnderground;
     public int cost;
+    public bool baseObject;
+
 }

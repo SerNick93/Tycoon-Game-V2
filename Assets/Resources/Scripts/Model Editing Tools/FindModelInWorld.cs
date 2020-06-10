@@ -47,12 +47,30 @@ public class FindModelInWorld : MonoBehaviour
                     editModel = hit.transform.GetComponent<EditModel>();
                     placeObject = hit.transform.GetComponent<PlaceObjectInWorld>();
 
-                    if (editModel && !placeObject.enabled && 
-                        !GameManager.MyInstance.ActiveModel)
+                    //if (editModel && !placeObject.enabled && 
+                    //    !GameManager.MyInstance.ActiveModel)
+                    //{
+                    //    GameManager.MyInstance.ActiveModel = hit.transform.gameObject;
+                    //    Debug.Log("Enabling Transform");
+                    //    editModel.EnableTransformTools();
+                    //}
+                    if (editModel && !placeObject.enabled && GameManager.ActiveModels.Count == 0)
                     {
-                        GameManager.MyInstance.ActiveModel = hit.transform.gameObject;
+                        GameManager.ActiveModels.Add(hit.transform.gameObject);
                         Debug.Log("Enabling Transform");
                         editModel.EnableTransformTools();
+                    }
+                    if (editModel && !placeObject.enabled && Input.GetKey(KeyCode.LeftShift))
+                    {
+                        GameManager.ActiveModels.Add(hit.transform.gameObject);
+                        Debug.Log("Enabling Transform");
+                        editModel.EnableTransformTools();
+
+                    }
+
+                    if (hit.transform.CompareTag("SnapPoint"))
+                    {
+                        hit.transform.gameObject.GetComponent<MeshRenderer>().material = MaterialManager.MyInstance.GreenMat;
                     }
                 }
             }
@@ -73,7 +91,7 @@ public class FindModelInWorld : MonoBehaviour
                     MeshRenderer mr = hit.transform.GetComponent<MeshRenderer>();
                     FloorData fd = hit.transform.GetComponent<FloorData>();
 
-                    if (hit.transform.gameObject.layer == 9 && !GameManager.MyInstance.ActiveModel)
+                    if (hit.transform.gameObject.layer == 9 && GameManager.ActiveModels.Count == 0)
                     {
                         if (MaterialManager.MyInstance.ActiveMaterial)
                         {

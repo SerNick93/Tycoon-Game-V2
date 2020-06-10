@@ -15,4 +15,5 @@ public class SO_NewUnlock : ScriptableObject
     public SO_NewUnlock[] prerequisits;
     public bool isUnlocked;
     public int researchCost;
+
 }

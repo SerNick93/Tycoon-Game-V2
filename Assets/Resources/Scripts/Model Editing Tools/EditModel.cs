@@ -20,7 +20,16 @@ public class EditModel : MonoBehaviour
         if (!enabled)
         {
             //Enable placment tools
-            Debug.Log("Enabling Tools");
+            GameObject TChild = transform.GetChild(0).gameObject;
+            //if the nodes are not active, activate them
+            for (int i = 0; i < TChild.transform.childCount; i++)
+            {
+                if (!TChild.transform.GetChild(i).gameObject.activeSelf)
+                {
+                    TChild.transform.GetChild(i).gameObject.SetActive(true);
+                }
+            }
+
             enabled = true;
             placeObjectinWorld.ObjectMeshRenderer.material = MaterialManager.MyInstance.GreenMat;          
         }
@@ -30,16 +39,25 @@ public class EditModel : MonoBehaviour
         float h =  Input.GetAxis("Horizontal") * Time.deltaTime * 2.0f;
         float v =  Input.GetAxis("Vertical") * Time.deltaTime * 2.0f;
 
-        if (GameManager.MyInstance.ActiveModel != null)
+        if (GameManager.ActiveModels != null)
         {
-            if (GameManager.MyInstance.ActiveModel == this.gameObject)
-            {
                 //Disable placement tools as long as the model is not colliding with another object.
                 if (Input.GetMouseButtonDown(1) || Input.GetKeyUp(KeyCode.Escape) && !placeObjectinWorld.ColliderAlert)
                 {
                     placeObjectinWorld.ObjectMeshRenderer.material = MaterialManager.MyInstance.StandardMat;
                     enabled = false;
-                    GameManager.MyInstance.ActiveModel = null;
+
+                    GameObject TChild = transform.GetChild(0).gameObject;
+                    //if the nodes are not active, activate them
+                    for (int i = 0; i < TChild.transform.childCount; i++)
+                    {
+                        if (TChild.transform.GetChild(i).gameObject.activeSelf)
+                        {
+                            TChild.transform.GetChild(i).gameObject.SetActive(false);
+                        }
+                    }
+
+                    GameManager.ActiveModels.Remove(gameObject);
                 }
                 else if (placeObjectinWorld.ColliderAlert)
                 {
@@ -59,14 +77,13 @@ public class EditModel : MonoBehaviour
                 }
             }
 
-        }
     }
     public void OnMouseDrag()
     {
         //Drag the model around. 
         if (placeObjectinWorld != null)
         {
-            if (GameManager.MyInstance.ActiveModel == this.gameObject && GameManager.MyInstance.ActiveModel != null)
+            if (GameManager.ActiveModels != null)
             {
                 if (!EventSystem.current.IsPointerOverGameObject())
                 {

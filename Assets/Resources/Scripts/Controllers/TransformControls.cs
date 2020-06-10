@@ -54,11 +54,21 @@ public class TransformControls : MonoBehaviour
 
     public void DestroyActiveObjects()
     {
-        if (gm.ActiveModel)
+        if (GameManager.ActiveModels.Count > 1)
         {
-            CustomControllers.DestroyGameObject(gm.ActiveModel);
-            
+            for (int i = 0; i < GameManager.ActiveModels.Count; i++)
+            {
+                CustomControllers.DestroyMultipleGameObjects(GameManager.ActiveModels.ToArray());
+            }
         }
+        else
+        {
+            for (int i = 0; i < GameManager.ActiveModels.Count;)
+            {
+                CustomControllers.DestroyGameObject(GameManager.ActiveModels[i]);
+            }
+        }
+
     }
 
 }

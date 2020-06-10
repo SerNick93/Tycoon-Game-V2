@@ -54,16 +54,6 @@ namespace Nick.controllers
                 (Mathf.RoundToInt(cc.bounds.size.x)),
                 (1),
                 (Mathf.RoundToInt(cc.bounds.size.z)));
-
-
-            //BoundsInt area = new BoundsInt(
-            //    (Mathf.RoundToInt(cc.bounds.min.x)),
-            //    (Mathf.RoundToInt(cc.bounds.min.y)),
-            //    (Mathf.RoundToInt(cc.bounds.min.z)),
-            //    (Mathf.RoundToInt(cc.bounds.size.x)),
-            //    (1),
-            //    (Mathf.RoundToInt(cc.bounds.size.z)));
-
             Debug.Log(area);
 
             return area;
@@ -82,9 +72,16 @@ namespace Nick.controllers
 
         public static void DestroyGameObject(GameObject go)
         {
-            Object.Destroy(go);
-            GameManager.MyInstance.ActiveModel = null;
+                Object.Destroy(go);
+                GameManager.ActiveModels.Remove(go);
         }
-
+        public static void DestroyMultipleGameObjects(GameObject[] GOs)
+        {
+            for (int i = 0; i < GOs.Length; i++)
+            {
+                Object.Destroy(GOs[i]);
+                GameManager.ActiveModels.Remove(GOs[i]);
+            }
+        }
     }
 }

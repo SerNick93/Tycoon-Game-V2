@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rail
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 0}
-  unlockName: 
+  unlockName: Long Rail
   description: 
   researchTime: 0
   unlockObject: []
@@ -23,3 +23,4 @@ MonoBehaviour:
   multiPlace: 0
   placeUnderground: 0
   cost: 0
+  baseObject: 1

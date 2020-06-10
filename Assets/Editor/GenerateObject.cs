@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Nick.controllers;
 
 public enum OPTIONS
 {
@@ -48,6 +49,7 @@ public class GenerateObject : EditorWindow
     static bool isUnlocked;
     static bool isSnappable;
     static int customSnapPointsNo;
+    static bool baseObject;
 
     [SerializeField]
     SO_NewUnlock[] newUnlocks = new SO_NewUnlock[0];
@@ -86,6 +88,7 @@ public class GenerateObject : EditorWindow
         //Use this for layermasks
         flags = EditorGUILayout.MaskField("Flags", flags, options);
 
+        baseObject = EditorGUILayout.Toggle("Is this a Base object?", baseObject);
         meshObject = EditorGUILayout.ObjectField("New Object Model", meshObject, typeof(UnityEngine.Object), false);
         //Determines the type of pivot and snappoints set.
         objectType = (OPTIONS)EditorGUILayout.EnumPopup("Object Type", objectType);
@@ -148,7 +151,10 @@ public class GenerateObject : EditorWindow
         Transform tChild = go.transform.GetChild(0).GetComponent<Transform>();
         ScriptableObjectUtility.CreateAsset<SO_Object>(path, objectName);
         success[1] = true;
-
+        if (baseObject)
+        {
+            go.AddComponent<RootObject>();
+        }
         if (isSnappable)
         {
             switch (objectType)
@@ -266,7 +272,6 @@ public class GenerateObject : EditorWindow
     private void OvergroundSnapPoints(GameObject go, Transform tChild)
     {
         tChild.position = new Vector3(tChild.localScale.x / 2, tChild.position.y, tChild.localScale.z / 2);
-
         Vector3Int[] localCoordinates = new Vector3Int[8];
         localCoordinates[0] = new Vector3Int(
             (int)tChild.localPosition.x,
@@ -311,8 +316,8 @@ public class GenerateObject : EditorWindow
             (int)tChild.localPosition.y + (int)tChild.localScale.y,
             (int)tChild.localPosition.z - (int)tChild.localScale.z
             );
-        success[2] = true;
 
+        success[2] = true;
         SetupSnapPoints(go, localCoordinates, tChild);
 
     }
@@ -345,6 +350,8 @@ public class GenerateObject : EditorWindow
         node.transform.parent = tChild.transform;
         node.transform.localScale = node.transform.localScale / 5 ;
         node.GetComponent<SphereCollider>().radius = 0.5f;
+        node.AddComponent<SnapPoint>();
+        node.tag = "SnapPoint";
 
         for (int i = 0; i < localCoordinates.Length; i++)
         {
@@ -408,6 +415,7 @@ public class GenerateObject : EditorWindow
         p.PlaceableObject.researchCost = researchCost;
         p.PlaceableObject.unlockObject = newUnlocks;
         p.PlaceableObject.prerequisits = prerequisits;
+        p.PlaceableObject.baseObject = baseObject;
         success[5] = true;
 
         CreatePrefab(go);

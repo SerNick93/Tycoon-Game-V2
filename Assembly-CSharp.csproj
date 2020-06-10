@@ -68,6 +68,7 @@
     <Compile Include="Assets\Resources\Scripts\Controllers\CustomControllers.cs" />
     <Compile Include="Assets\Resources\Scripts\Controllers\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Controllers\MaterialManager.cs" />
+    <Compile Include="Assets\Resources\Scripts\Controllers\ObjectList.cs" />
     <Compile Include="Assets\Resources\Scripts\Controllers\PlacementManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Controllers\RoomCreationScript.cs" />
     <Compile Include="Assets\Resources\Scripts\Controllers\TimeController.cs" />
@@ -79,8 +80,11 @@
     <Compile Include="Assets\Resources\Scripts\Model Editing Tools\FindModelInWorld.cs" />
     <Compile Include="Assets\Resources\Scripts\Model Editing Tools\FloorData.cs" />
     <Compile Include="Assets\Resources\Scripts\Model Editing Tools\PlaceObjectInWorld.cs" />
+    <Compile Include="Assets\Resources\Scripts\Model Editing Tools\SnapPoint.cs" />
     <Compile Include="Assets\Resources\Scripts\Research\ResearchTree.cs" />
+    <Compile Include="Assets\Resources\Scripts\RootObject.cs" />
     <Compile Include="Assets\Resources\Scripts\SaveGame\SaveData.cs" />
+    <Compile Include="Assets\Resources\Scripts\ScriptableObjects\SO_ChildObject.cs" />
     <Compile Include="Assets\Resources\Scripts\ScriptableObjects\SO_FloorMaterial.cs" />
     <Compile Include="Assets\Resources\Scripts\ScriptableObjects\SO_NewUnlock.cs" />
     <Compile Include="Assets\Resources\Scripts\ScriptableObjects\SO_Object.cs" />
@@ -88,6 +92,8 @@
     <Compile Include="Assets\Resources\Scripts\ScriptableObjects\SO_Zones.cs" />
     <Compile Include="Assets\Resources\Scripts\ScriptableObjects\ScriptableObjectUtility.cs" />
     <Compile Include="Assets\Resources\Scripts\UI\ButtonScript.cs" />
+    <Compile Include="Assets\Resources\Scripts\UI\UI_SubObject.cs" />
+    <Compile Include="Assets\Resources\Scripts\UI\UI_SubObject_Button.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

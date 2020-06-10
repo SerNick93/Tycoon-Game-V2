@@ -64,7 +64,7 @@ public class PlaceObjectInWorld : MonoBehaviour
         }
 
         //Rotate the model by 90deg
-        if (Input.GetMouseButtonDown(1) && GameManager.MyInstance.ActiveModel)
+        if (Input.GetMouseButtonDown(1) && GameManager.ActiveModels.Count != 0)
         {
             transform.RotateAround(ObjectMeshRenderer.bounds.center, Vector3.up, 90f);
         }
@@ -122,25 +122,43 @@ public class PlaceObjectInWorld : MonoBehaviour
     {
         if (PlaceableObject.cost <= GameManager.MyInstance.TotalMoney)
         {
-            numOfRamps++;
-            GameObject go = Instantiate(gameObject, clickPoint, transform.rotation, MaterialManager.ObjectWorldHolder);
-            go.transform.GetChild(0).GetComponent<MeshRenderer>().material = MaterialManager.StandardMat;
-            go.GetComponent<PlaceObjectInWorld>().enabled = false;
+            GameObject go = null;
+            if (PlaceableObject.baseObject)
+            {
+                numOfRamps++;
+                go = Instantiate(gameObject, clickPoint, transform.rotation, MaterialManager.ObjectWorldHolder);
+                UI_SubObject.MyInstance.PopulateSubObjects(go);
+                go.transform.GetChild(0).GetComponent<MeshRenderer>().material = MaterialManager.StandardMat;
+                go.GetComponent<PlaceObjectInWorld>().enabled = false;
+            }
+            else if (!PlaceableObject.baseObject)
+            {
+                Transform t = null;
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    if (transform.GetChild(i).GetComponent<SnapPoint>().ParentFound)
+                    {
+                        t = transform.GetChild(i).GetComponent<SnapPoint>().Parent;
+                    }
+                }
+               GameObject childGo = Instantiate(gameObject, clickPoint, transform.rotation, t);
+               childGo.transform.GetComponent<MeshRenderer>().material = MaterialManager.StandardMat;
+               childGo.GetComponent<PlaceObjectInWorld>().enabled = false;
 
+            }
 
             GameManager.MyInstance.ReduceMoney(PlaceableObject.cost);
 
             if (!PlaceableObject.multiPlace)
             {
                 CustomControllers.DestroyGameObject(gameObject);
-                GameManager.MyInstance.ActiveModel = null;
+                GameManager.ActiveModels.Clear();
             }
         }
     }
     
     private void OnCollisionStay(Collision collision)
-    {
-                    
+    {                   
         if (PlaceableObject.placeUnderground)
         {
             if (collision.transform.gameObject.layer == 9)
@@ -148,22 +166,20 @@ public class PlaceObjectInWorld : MonoBehaviour
                 foreach (ContactPoint contact in collision.contacts)
                 {
                     var floorBelowObject = collision.transform.GetComponent<FloorData>();
-                    if (!GameManager.MyInstance.ActiveModel)
+                    if (GameManager.ActiveModels.Count == 0)
                     {
                         if (floorBelowObject.enabled)
                         {
                             floorBelowObject.DisableThis();
                         }
                     }
-                    if (GameManager.MyInstance.ActiveModel)
+                    if (GameManager.ActiveModels.Count != 0)
                     {
                         floorBelowObject.EnableThis();
                     }
                 }
-            }
-            
+            }            
         }
-
     }
 
     #region Ramp container bounding box
